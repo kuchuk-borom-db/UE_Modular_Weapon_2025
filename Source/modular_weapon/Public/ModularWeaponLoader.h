@@ -15,4 +15,6 @@ class MODULAR_WEAPON_API UModularWeaponLoader : public UObject
 public:
 	UFUNCTION(BlueprintCallable)
 	void Initialize(UModularWeaponDA* ModularWeaponDataAsset);
+	UPROPERTY()
+	TMap<EWeaponPartType, UWeaponPartTypeFunction*> WeaponPartTypeFunctionMap;
 };

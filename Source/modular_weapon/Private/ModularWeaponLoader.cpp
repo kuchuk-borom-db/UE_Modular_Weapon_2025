@@ -57,4 +57,5 @@ void UModularWeaponLoader::Initialize(UModularWeaponDA* ModularWeaponDataAsset)
 		A.PartFunction = PartFunctionMap;
 		WeaponPartTypeFunctionMap.Add(Data.Key, A);
 	}
+	UE_LOG(LogTemp, Display, TEXT("Initialized Modular Weapon Data asset"));
 }

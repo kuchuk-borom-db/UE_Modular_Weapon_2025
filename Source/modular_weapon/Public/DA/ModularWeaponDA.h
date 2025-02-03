@@ -11,7 +11,7 @@
 /**
  * Class to hold Data about modular weapon parts
  */
-UCLASS(Blueprintable,BlueprintType)
+UCLASS(Blueprintable, BlueprintType)
 class MODULAR_WEAPON_API UModularWeaponDA : public UDataAsset
 {
 	GENERATED_BODY()

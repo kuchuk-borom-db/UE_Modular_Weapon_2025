@@ -3,6 +3,8 @@
 
 #include "ModularWeaponLoader.h"
 
+
 void UModularWeaponLoader::Initialize(UModularWeaponDA* ModularWeaponDataAsset)
 {
+	
 }

@@ -5,5 +5,4 @@
 
 void UWeaponPartFunction::Foo_Implementation()
 {
-	UE_LOG(LogTemp, Warning, TEXT("UWeaponPartFunction::Foo_Implementation called!"));
 }

@@ -1,8 +1,8 @@
 ﻿#pragma once
 
 #include "CoreMinimal.h"
-#include "Engine/SkeletalMesh.h"
-#include "WeaponPart/WeaponPartFunction.h"
+#include "WeaponPartSKMData.h"
+#include "WeaponPart/WeaponPartTypeFunction.h"
 #include "WeaponPartData.generated.h"
 
 USTRUCT(BlueprintType)
@@ -10,7 +10,7 @@ struct MODULAR_WEAPON_API FWeaponPartData
 {
 	GENERATED_BODY()
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	TSubclassOf<UWeaponPartFunction> WeaponPartFunction; //Something like this
+	TSubclassOf<UWeaponPartTypeFunction> WeaponPartTypeFunction;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	TMap<USkeletalMesh*, FString> Parts;
+	TMap<FString, FWeaponPartSKMData> Parts;
 };

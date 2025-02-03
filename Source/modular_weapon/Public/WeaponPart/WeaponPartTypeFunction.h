@@ -4,17 +4,15 @@
 
 #include "CoreMinimal.h"
 #include "UObject/Object.h"
-#include "WeaponPartFunction.generated.h"
+#include "WeaponPartTypeFunction.generated.h"
 
-/**
- * 
- */
-UCLASS()
-class MODULAR_WEAPON_API UWeaponPartFunction : public UObject
+UCLASS(Blueprintable)
+class MODULAR_WEAPON_API UWeaponPartTypeFunction : public UObject
 {
 	GENERATED_BODY()
-public:
+
+public :
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
 	void Foo();
-	virtual void Foo_Implementation();
+	virtual void Foo_Implementation(); // Default implementation
 };

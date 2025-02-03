@@ -1,0 +1,24 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0",
+	"FriendlyName": "modular_weapon",
+	"Description": "Create modular weapons",
+	"Category": "Other",
+	"CreatedBy": "kuchuk borom debbarma",
+	"CreatedByURL": "",
+	"DocsURL": "",
+	"MarketplaceURL": "",
+	"SupportURL": "",
+	"CanContainContent": true,
+	"IsBetaVersion": true,
+	"IsExperimentalVersion": false,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "modular_weapon",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	]
+}

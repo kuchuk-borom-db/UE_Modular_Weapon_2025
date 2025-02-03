@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "DA/ModularWeaponDA.h"
+#include "Struct/WeaponPartTypeFunctionStore.h"
 #include "UObject/Object.h"
 #include "ModularWeaponLoader.generated.h"
 
@@ -16,5 +17,5 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void Initialize(UModularWeaponDA* ModularWeaponDataAsset);
 	UPROPERTY()
-	TMap<EWeaponPartType, UWeaponPartTypeFunction*> WeaponPartTypeFunctionMap;
+	TMap<EWeaponPartType, FWeaponPartTypeFunctionStore> WeaponPartTypeFunctionMap;
 };

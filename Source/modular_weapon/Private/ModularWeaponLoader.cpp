@@ -23,12 +23,38 @@ void UModularWeaponLoader::Initialize(UModularWeaponDA* ModularWeaponDataAsset)
 
 		if (!Data.Value.WeaponPartTypeFunction->IsValidLowLevel())
 		{
-			UE_LOG(LogTemp, Error, TEXT("WeaponPartTypeFunction is not valid for key: %d"), static_cast<int32>(Data.Key));
+			UE_LOG(LogTemp, Error, TEXT("WeaponPartTypeFunction is not valid for key: %d"),
+			       static_cast<int32>(Data.Key));
 			continue;
 		}
 
-		UWeaponPartTypeFunction* Function = NewObject<UWeaponPartTypeFunction>(
-			this, Data.Value.WeaponPartTypeFunction);
-		WeaponPartTypeFunctionMap.Add(Data.Key, Function);
+		UWeaponPartTypeFunction* PartTypeFunction = NewObject<UWeaponPartTypeFunction>(
+			this, Data.Value.WeaponPartTypeFunction.Get());
+		FWeaponPartTypeFunctionStore A;
+		A.PartTypeFunction = PartTypeFunction;
+		TMap<FString, UWeaponPartFunction*> PartFunctionMap;
+		//Iterate the individual parts and create instances for them too
+		for (const TTuple<FString, FWeaponPartSKMData>& Part : Data.Value.Parts)
+		{
+			if (Part.Key.IsEmpty() || !Part.Value.PartFunctionClass)
+			{
+				UE_LOG(LogTemp, Error,
+				       TEXT("Part's Name is empty or It's Part function is missing. This may be intentional"))
+				continue;
+			}
+
+			if (!Part.Value.PartFunctionClass->IsValidLowLevel())
+			{
+				UE_LOG(LogTemp, Error, TEXT("WeaponPartFunction is not valid for Part: %s for key %d"),
+				       *Part.Key, static_cast<int32>(Data.Key));
+
+				continue;
+			}
+			UWeaponPartFunction* PartFunction = NewObject<
+				UWeaponPartFunction>(this, Part.Value.PartFunctionClass.Get());
+			PartFunctionMap.Add(Part.Key, PartFunction);
+		}
+		A.PartFunction = PartFunctionMap;
+		WeaponPartTypeFunctionMap.Add(Data.Key, A);
 	}
 }

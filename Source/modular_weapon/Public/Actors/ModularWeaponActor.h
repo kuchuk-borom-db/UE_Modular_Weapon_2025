@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "Struct/WeaponPartSkmCompData.h"
 #include "ModularWeaponActor.generated.h"
 
 UCLASS(BlueprintType)
@@ -13,6 +14,8 @@ class MODULAR_WEAPON_API AModularWeaponActor : public AActor
 
 public:
 	AModularWeaponActor();
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TMap<USkeletalMeshComponent*, FWeaponPartSkmCompData > Parts;
 
 protected:
 	virtual void BeginPlay() override;
